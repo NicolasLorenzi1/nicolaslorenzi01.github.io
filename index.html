@@ -16,36 +16,34 @@
             align-items: center;
             color: white;
             overflow: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            font-weight: 400;
+            color: red;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            text-align: center;
-            font-weight: 400;
-            color: red;
-            position: top 40%;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            top: 40%;  /* Centralizado */
+            transform: translateY(-50%);
+            font-size: 5em;      
         }
 
-        h2{
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            text-align: center;
-            font-weight: 400;
-            color: red;
-            position: top 40%;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        h2 {
+            top: 20%;  /* Um pouco acima do centro */
+            transform: translateY(-50%);
+            font-size: 6em;
         }
 
-        h3{
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            text-align: center;
-            font-weight: 400;
-            color: red;
-            position: top 60%;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        h3 {
+            top: 50%;  /* Um pouco abaixo do centro */
+            transform: translateY(-50%);
+            font-size: 6em;
         }
 
         @keyframes snow {
@@ -118,9 +116,9 @@
     
         function atualizarMensagem() {
             if (segundosRestantes >= 0) {
-                document.getElementById('mensagem2').textContent = "Faltam apenas:"
+                document.getElementById('mensagem2').textContent = "Faltam apenas:";
                 document.getElementById('mensagem').textContent = formatarTempo(segundosRestantes);
-                document.getElementById('mensagem3').textContent = "para o natal!"
+                document.getElementById('mensagem3').textContent = "para o natal!";
                 segundosRestantes--;
             } else {
                 document.getElementById('mensagem').textContent = "Feliz Natal!";
