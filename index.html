@@ -24,6 +24,27 @@
             text-align: center;
             font-weight: 400;
             color: red;
+            position: top 40%;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        h2{
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            text-align: center;
+            font-weight: 400;
+            color: red;
+            position: top 40%;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        h3{
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            text-align: center;
+            font-weight: 400;
+            color: red;
+            position: top 60%;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
@@ -41,7 +62,7 @@
         }
 
         .snowflake {
-            position: absolute;
+            position: relative;
             background-color: #fff;
             border-radius: 50%;
             width: 10px;
@@ -69,6 +90,8 @@
     <div class="snowflake" style="--left: 0.4; --duration: 6s; --delay: 1.5s;"></div>
 
     <h1 id="mensagem"></h1>
+    <h2 id="mensagem2"></h2>
+    <h3 id="mensagem3"></h3>
     
     <script>
         function segundosNatal() {
@@ -95,7 +118,9 @@
     
         function atualizarMensagem() {
             if (segundosRestantes >= 0) {
+                document.getElementById('mensagem2').textContent = "Faltam apenas:"
                 document.getElementById('mensagem').textContent = formatarTempo(segundosRestantes);
+                document.getElementById('mensagem3').textContent = "para o natal!"
                 segundosRestantes--;
             } else {
                 document.getElementById('mensagem').textContent = "Feliz Natal!";
