@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contagem Regressiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('/imagens/fotoFundo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            text-align: center;
+            font-weight: 400;
+            color: red;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        @keyframes snow {
+            0% {
+                top: -10%;
+                left: 0;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                left: calc(100% * var(--left));
+                opacity: 0;
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: snow var(--duration) linear infinite;
+            animation-delay: var(--delay);
+        }
+
+        .snowflake:nth-child(odd) {
+            animation-duration: calc(var(--duration) + 2s);
+        }
+
+        .snowflake:nth-child(even) {
+            animation-duration: calc(var(--duration) + 3s);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="snowflake" style="--left: 0.1; --duration: 5s; --delay: 0s;"></div>
+    <div class="snowflake" style="--left: 0.3; --duration: 6s; --delay: 1s;"></div>
+    <div class="snowflake" style="--left: 0.6; --duration: 4s; --delay: 2s;"></div>
+    <div class="snowflake" style="--left: 0.8; --duration: 5s; --delay: 3s;"></div>
+    <div class="snowflake" style="--left: 0.4; --duration: 6s; --delay: 1.5s;"></div>
+
+    <h1 id="mensagem"></h1>
+    
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let segundosRestantes = /*[[${segundosRestantes}]]*/ 0; 
+
+        function formatarTempo(segundos) {
+            const dias = Math.floor(segundos / (24 * 3600));
+            const horas = Math.floor((segundos % (24 * 3600)) / 3600); 
+            const minutos = Math.floor((segundos % 3600) / 60);
+            const segundosRestantes = segundos % 60; 
+            return `${dias}d ${horas}h ${minutos}m ${segundosRestantes}s`;
+        }
+    
+        function atualizarMensagem() {
+            if (segundosRestantes >= 0) {
+                document.getElementById('mensagem').textContent = formatarTempo(segundosRestantes);
+                segundosRestantes--;
+            } else {
+                document.getElementById('mensagem').textContent = "Feliz Natal!";
+            }
+        }
+    
+        setInterval(atualizarMensagem, 1000);
+    
+        atualizarMensagem();
+        /*]]>*/
+    </script>
+    
+
+</body>
+</html>
