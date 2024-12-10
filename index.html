@@ -29,19 +29,19 @@
         }
 
         h1 {
-            top: 40%;  /* Centralizado */
+            top: 40%;  
             transform: translateY(-50%);
             font-size: 5em;      
         }
 
         h2 {
-            top: 20%;  /* Um pouco acima do centro */
+            top: 20%; 
             transform: translateY(-50%);
             font-size: 6em;
         }
 
         h3 {
-            top: 50%;  /* Um pouco abaixo do centro */
+            top: 50%;  
             transform: translateY(-50%);
             font-size: 6em;
         }
@@ -82,7 +82,7 @@
 <body>
 
     <audio autoplay loop hidden>
-        <source src="musica.mp3" type="audio/mp3">
+        <source src="musica.mp3">
     </audio>
 
     <div class="snowflake" style="--left: 0.1; --duration: 5s; --delay: 0s;"></div>
@@ -122,7 +122,7 @@
     
         function atualizarMensagem() {
             if (segundosRestantes >= 0) {
-                document.getElementById('mensagem2').textContent = "Fatam apenas:";
+                document.getElementById('mensagem2').textContent = "Faltam apenas:";
                 document.getElementById('mensagem').textContent = formatarTempo(segundosRestantes);
                 document.getElementById('mensagem3').textContent = "para o natal!";
                 segundosRestantes--;
