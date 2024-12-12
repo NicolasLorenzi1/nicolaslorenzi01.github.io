@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Contagem Regressiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
@@ -7,7 +8,7 @@
         body {
             margin: 0;
             height: 100vh;
-            background-image: url('fotoFundo.jpg'); 
+            background-image: url('fotoFundo.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -19,7 +20,9 @@
             position: relative;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Dancing Script', cursive;
             text-align: center;
             font-weight: 400;
@@ -29,19 +32,22 @@
         }
 
         h1 {
-            top: 40%;  /* Centralizado */
+            top: 40%;
+            /* Centralizado */
             transform: translateY(-50%);
-            font-size: 5em;      
+            font-size: 5em;
         }
 
         h2 {
-            top: 20%;  /* Um pouco acima do centro */
+            top: 20%;
+            /* Um pouco acima do centro */
             transform: translateY(-50%);
             font-size: 6em;
         }
 
         h3 {
-            top: 50%;  /* Um pouco abaixo do centro */
+            top: 50%;
+            /* Um pouco abaixo do centro */
             transform: translateY(-50%);
             font-size: 6em;
         }
@@ -52,6 +58,7 @@
                 left: 0;
                 opacity: 1;
             }
+
             100% {
                 top: 100%;
                 left: calc(100% * var(--left));
@@ -76,9 +83,9 @@
         .snowflake:nth-child(even) {
             animation-duration: calc(var(--duration) + 3s);
         }
-
     </style>
 </head>
+
 <body>
 
     <audio autoplay loop hidden>
@@ -94,14 +101,20 @@
     <h1 id="mensagem"></h1>
     <h2 id="mensagem2"></h2>
     <h3 id="mensagem3"></h3>
-    
+
     <script>
-        document.querySelector('audio').muted = false;  
+        document.querySelector('audio').muted = false;
+
+        window.addEventListener('click', function () {
+            const audio = document.querySelector('audio');
+            audio.play().catch(error => console.log('Reprodução bloqueada:', error));
+        });
+
 
         function segundosNatal() {
             const agora = new Date();
-            const natal = new Date(agora.getFullYear(), 11, 25); 
-            
+            const natal = new Date(agora.getFullYear(), 11, 25);
+
             if (agora > natal) {
                 natal.setFullYear(natal.getFullYear() + 1);
             }
@@ -114,15 +127,15 @@
 
         function formatarTempo(segundos) {
             const dias = Math.floor(segundos / (24 * 3600));
-            const horas = Math.floor((segundos % (24 * 3600)) / 3600); 
+            const horas = Math.floor((segundos % (24 * 3600)) / 3600);
             const minutos = Math.floor((segundos % 3600) / 60);
-            const segundosFinais = segundos % 60; 
+            const segundosFinais = segundos % 60;
             return `${dias}d ${horas}h ${minutos}m ${segundosFinais}s`;
         }
-    
+
         function atualizarMensagem() {
             if (segundosRestantes >= 0) {
-                document.getElementById('mensagem2').textContent = "Fatam apenas:";
+                document.getElementById('mensagem2').textContent = "Faltam apenas:";
                 document.getElementById('mensagem').textContent = formatarTempo(segundosRestantes);
                 document.getElementById('mensagem3').textContent = "para o natal!";
                 segundosRestantes--;
@@ -130,9 +143,10 @@
                 document.getElementById('mensagem').textContent = "Feliz Natal!";
             }
         }
-    
-        atualizarMensagem(); 
+
+        atualizarMensagem();
         setInterval(atualizarMensagem, 1000); 
     </script>
 </body>
+
 </html>
